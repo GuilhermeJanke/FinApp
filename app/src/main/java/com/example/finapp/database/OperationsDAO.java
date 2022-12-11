@@ -1,9 +1,14 @@
 package com.example.finapp.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OperationsDAO {
   //private SimpleDBWrapper dbHelper;
@@ -32,6 +37,41 @@ public class OperationsDAO {
       return false;
     }
     return true;
+  }
+
+  public List<Operation> getListaClassificada(){
+    List<Operation> operationList = new ArrayList<>();
+    String sql = "SELECT id, filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " GROUP BY filter;";
+    Cursor cursor = read.rawQuery(sql, null);
+
+    while(cursor.moveToNext()){
+      Operation operation = new Operation();
+      @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
+      operation.setId(id);
+      operation.setFilter("filter");
+      operation.setType("type");
+      operation.setValue(Double.parseDouble("value"));
+      operationList.add(operation);
+    }
+    return operationList;
+  }
+
+  public List<Operation> search(String minDate, String maxDate){
+    List<Operation> operationList = new ArrayList<>();
+    String sql = "SELECT id, filter, date, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE "
+            + SimpleDBWrapper.OPERATION_DATE + " BETWEEN " + "minDate" + " AND " + "maxDate;";
+    Cursor cursor = read.rawQuery(sql, null);
+
+    while(cursor.moveToNext()){
+      Operation operation = new Operation();
+      @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
+      operation.setId(id);
+      operation.setFilter("filter");
+      operation.setType("date");
+      operation.setValue(Double.parseDouble("value"));
+      operationList.add(operation);
+    }
+    return operationList;
   }
 
 }
