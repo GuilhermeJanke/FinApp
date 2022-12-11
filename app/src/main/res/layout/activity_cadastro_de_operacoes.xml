@@ -6,4 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".ActivityCadastroDeOperacoes">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Cadastrar Operação"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="202dp"
+        android:layout_marginBottom="86dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Débito"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDebMoradia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Moradia" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDebSaude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saúde" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDebOutros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Outros" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crédito"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCredSalario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salário" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCredOutros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Outros" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="46dp"
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="12dp"
+        android:text=" Valor:  R$"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextValue"
+        app:layout_constraintEnd_toStartOf="@+id/editTextValue"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextValue"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="23dp"
+        android:ems="10"
+        android:hint="0000.00"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="Data:"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextDate"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="45dp"
+        android:ems="10"
+        android:hint="dd/mm/aaaa"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="44dp"
+        android:onClick="addOperation"
+        android:text="Cadastrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextDate" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
