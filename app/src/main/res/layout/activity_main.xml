@@ -4,64 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DADADA"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnCadastroDeOperacoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="17dp"
+        android:backgroundTint="#E91E63"
         android:onClick="btnCadastroDeOperacoes_Click"
         android:text="Cadastro de Operações"
-        app:layout_constraintBottom_toTopOf="@+id/btnExtrato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnExtrato"
+        app:layout_constraintEnd_toStartOf="@+id/btnExtrato"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnExtrato" />
 
     <Button
         android:id="@+id/btnExtrato"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="33dp"
+        android:backgroundTint="#9C27B0"
         android:onClick="btnExtrato_Click"
         android:text="Extrato"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btnPesquisar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btnCadastroDeOperacoes"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
         android:id="@+id/btnPesquisar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#193ADD"
         android:onClick="btnPesquisar_Click"
         android:text="PESQUISAR"
-        app:layout_constraintBottom_toTopOf="@+id/btnListaClassificada"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSair"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/btnListaClassificada"
+        app:layout_constraintTop_toBottomOf="@+id/btnExtrato" />
 
     <Button
         android:id="@+id/btnSair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="57dp"
+        android:backgroundTint="#F12233"
         android:onClick="btnSair_Click"
         android:text="Sair"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnListaClassificada" />
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnListaClassificada"
+        app:layout_constraintStart_toStartOf="@+id/btnListaClassificada"
+        app:layout_constraintTop_toBottomOf="@+id/btnPesquisar" />
 
     <Button
         android:id="@+id/btnListaClassificada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="319dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="17dp"
+        android:backgroundTint="#49C64E"
         android:onClick="btnListaClassificada_Click"
         android:text="Lista Classificada"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPesquisar"
+        app:layout_constraintEnd_toStartOf="@+id/btnPesquisar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnPesquisar" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="424dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="37dp"
+        android:background="#00BCD4"
+        app:layout_constraintBottom_toTopOf="@+id/btnExtrato"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-4dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="177dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="FinTech"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="626dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Bem-vindo!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
