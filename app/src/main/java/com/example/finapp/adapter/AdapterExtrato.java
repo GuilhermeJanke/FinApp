@@ -23,13 +23,15 @@ public class AdapterExtrato extends RecyclerView.Adapter<AdapterExtrato.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView classificacao, data, valor;
+        TextView type;
+        TextView date;
+        TextView value;
 
         public MyViewHolder(View view){
             super(view);
-            classificacao = view.findViewById(R.id.textViewClassificacao);
-            data = view.findViewById(R.id.textViewData);
-            valor = view.findViewById(R.id.textViewValor);
+            type = view.findViewById(R.id.textViewClassificacao);
+            date = view.findViewById(R.id.textViewData);
+            value = view.findViewById(R.id.textViewValor);
         }
     }
 
@@ -44,9 +46,9 @@ public class AdapterExtrato extends RecyclerView.Adapter<AdapterExtrato.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Extrato obj = listExtrato.get(position);
-        holder.classificacao.setText(obj.getClassificacao());
-        holder.data.setText(obj.getData());
-        holder.valor.setText(obj.getValor());
+        holder.type.setText(obj.getType());
+        holder.date.setText(obj.getDate());
+        //holder.value.setText("1.0");
 
     }
 

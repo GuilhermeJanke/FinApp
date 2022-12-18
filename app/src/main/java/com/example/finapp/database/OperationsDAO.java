@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.finapp.model.Extrato;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +74,44 @@ public class OperationsDAO {
       operationList.add(operation);
     }
     return operationList;
+  }
+
+  public List<Operation> getAllOperations(){
+    List<Operation> operationList = new ArrayList<>();
+    Cursor cursor = read.query(SimpleDBWrapper.TABLE_NAME_OPER, new String[]{"id", "filter", "type", "value", "date"},
+            null, null, null, null, null );
+    while(cursor.moveToNext()){
+      Operation operation = new Operation();
+      @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
+      @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
+      @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+      @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+      @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));;
+      operation.setId(id);
+      operation.setFilter(filter);
+      operation.setType(type);
+      operation.setValue(value);
+      operation.setDate(date);
+      operationList.add(operation);
+    }
+    return operationList;
+  }
+
+  public List<Extrato> listExtrato(){
+    List<Extrato> extratoList = new ArrayList<>();
+    Cursor cursor = read.query(SimpleDBWrapper.TABLE_NAME_OPER, new String[]{"type", "value", "date"},
+            null, null, null, null, null );
+    while(cursor.moveToNext()){
+      Extrato extrato = new Extrato();
+      @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+      @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+      @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));;
+      extrato.setType(type);
+      extrato.setValue(value);
+      extrato.setDate(date);
+      extratoList.add(extrato);
+    }
+    return extratoList;
   }
 
 }

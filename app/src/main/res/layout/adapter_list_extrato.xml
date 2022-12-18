@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/textViewClassificacao"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="42dp"
                 android:text="TextView" />
         </LinearLayout>
         <!-- col 1 end -->
@@ -38,7 +38,7 @@
             <TextView
                 android:id="@+id/textViewData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:text="TextView" />
         </LinearLayout>
         <!-- col 2 end -->
@@ -50,11 +50,12 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
                 android:id="@+id/textViewValor"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="numberDecimal" />
         </LinearLayout>
 
     </LinearLayout>

@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.finapp.R;
 import com.example.finapp.adapter.AdapterExtrato;
+import com.example.finapp.database.Operation;
+import com.example.finapp.database.OperationsDAO;
 import com.example.finapp.model.Extrato;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class ActivityExtrato extends AppCompatActivity {
 
     private RecyclerView recyclerViewExtrato;
     private List<Extrato> listExtrato = new ArrayList<>();
+    private List<Operation> listOperations = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +58,7 @@ public class ActivityExtrato extends AppCompatActivity {
     }
 
     public void createExtrato() {
-        Extrato obj = new Extrato("Class1", "Flash", "DC");
-        listExtrato.add(obj);
-        obj = new Extrato("Class2", "Din", "DC");
-        listExtrato.add(obj);
+        OperationsDAO operationDAO = new OperationsDAO(getApplicationContext());
+        listExtrato = operationDAO.listExtrato();
     }
 }

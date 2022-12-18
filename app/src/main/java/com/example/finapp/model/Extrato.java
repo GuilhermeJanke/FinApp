@@ -2,39 +2,40 @@ package com.example.finapp.model;
 
 public class Extrato {
 
-    private String classificacao;
-    private String data;
-    private String valor;
+    private String type;
+    private String date;
+    private double value;
 
     public Extrato(){}
 
-    public Extrato(String classificacao, String data, String valor) {
-        this.classificacao = classificacao;
-        this.data = data;
-        this.valor = valor;
+
+    public Extrato(String type, String date, double value) {
+        this.type = type;
+        this.date = date;
+        this.value = value;
     }
 
-    public String getClassificacao() {
-        return classificacao;
+    public String getType() {
+        return type;
     }
 
-    public void setClassificacao(String classificacao) {
-        this.classificacao = classificacao;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getValor() {
-        return valor;
+    public double getValue() {
+        return value;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setValue(Double value) {
+        this.value = value;
     }
 }
