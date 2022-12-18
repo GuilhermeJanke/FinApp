@@ -48,7 +48,7 @@ public class AdapterExtrato extends RecyclerView.Adapter<AdapterExtrato.MyViewHo
         Extrato obj = listExtrato.get(position);
         holder.type.setText(obj.getType());
         holder.date.setText(obj.getDate());
-        //holder.value.setText("1.0");
+        holder.value.setText(Double.toString(obj.getValue()));
 
     }
 
