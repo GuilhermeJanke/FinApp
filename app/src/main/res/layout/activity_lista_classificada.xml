@@ -10,10 +10,12 @@
         android:id="@+id/textViewListaClassificada"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#3366ff"
+        android:background="#00BCD4"
+        android:fontFamily="sans-serif-medium"
         android:padding="16dp"
         android:text="Lista Classificada"
-        android:textSize="24dp" />
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -21,22 +23,6 @@
         android:orientation="horizontal"
         android:weightSum="3">
 
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewHeaderOperacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#aaaaaa"
-                android:padding="8dp"
-                android:text="Operação" />
-
-        </LinearLayout>
 
         <!-- col 1 -->
 
@@ -47,12 +33,34 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewHeaderCategoria"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewHeaderOperacao"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#aaaaaa"
+                android:background="#52FFFFFF"
                 android:padding="8dp"
-                android:text="Categoria" />
+                android:text="Operação"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewHeaderCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="8dp"
+                android:text="Categoria"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
         <!-- col 1 end -->
@@ -69,11 +77,14 @@
 
             <TextView
                 android:id="@+id/textViewHeaderValorTotal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#cccccc"
+                android:background="#FFFFFF"
                 android:padding="8dp"
-                android:text="Valor Total" />
+                android:text="Valor Total"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -88,7 +99,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewListaClassificada"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="625dp"
+            android:background="#DADADA" />
     </LinearLayout>
 
     <!-- row 1 end -->

@@ -24,7 +24,10 @@
                 android:id="@+id/textViewClassificacao"
                 android:layout_width="match_parent"
                 android:layout_height="29dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
         <!-- col 1 end -->
         <!-- col 2 -->
@@ -39,7 +42,10 @@
                 android:id="@+id/textViewData"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
         <!-- col 2 end -->
         <!-- col 3 -->
@@ -54,7 +60,10 @@
                 android:id="@+id/textViewValor"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
