@@ -10,10 +10,12 @@
         android:id="@+id/textViewExtrato"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#3366ff"
+        android:background="#00BCD4"
+        android:fontFamily="sans-serif-medium"
         android:padding="16dp"
         android:text="Extrato"
-        android:textSize="24dp" />
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,11 +33,14 @@
 
             <TextView
                 android:id="@+id/textViewHeaderClassificacao"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#aaaaaa"
+                android:background="#FFFFFF"
                 android:padding="8dp"
-                android:text="Classificação" />
+                android:text="Classificação"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
         <!-- col 1 end -->
@@ -49,11 +54,14 @@
 
             <TextView
                 android:id="@+id/textViewHeaderData"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#bbbbbb"
+                android:background="#FFFFFF"
                 android:padding="8dp"
-                android:text="Data" />
+                android:text="Data"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
         <!-- col 2 end -->
@@ -67,11 +75,14 @@
 
             <TextView
                 android:id="@+id/textViewHeaderValor"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#cccccc"
+                android:background="#FFFFFF"
                 android:padding="8dp"
-                android:text="Valor" />
+                android:text="Valor"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -86,7 +97,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewExtrato"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="629dp"
+            android:background="#DADADA" />
     </LinearLayout>
 
     <!-- row 1 end -->
