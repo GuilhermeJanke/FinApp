@@ -10,15 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finapp.R;
 import com.example.finapp.database.Operation;
-import com.example.finapp.model.Extrato;
 
 import java.util.List;
 
-public class AdapterListaClassificada extends RecyclerView.Adapter<AdapterListaClassificada.MyViewHolder> {
+public class AdapterPesquisa extends RecyclerView.Adapter<AdapterPesquisa.MyViewHolder>{
 
     private List<Operation> listOperation;
 
-    public AdapterListaClassificada (List<Operation> list) {
+    public AdapterPesquisa (List<Operation> list) {
         this.listOperation = list;
     }
 
