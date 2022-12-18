@@ -28,7 +28,7 @@ public class ActivityExtrato extends AppCompatActivity {
 
     private RecyclerView recyclerViewExtrato;
     private List<Extrato> listExtrato = new ArrayList<>();
-    private List<Operation> listOperations = new ArrayList<>();
+    private OperationsDAO operationDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,13 @@ public class ActivityExtrato extends AppCompatActivity {
     }
 
     public void createExtrato() {
-        OperationsDAO operationDAO = new OperationsDAO(getApplicationContext());
+        operationDAO = new OperationsDAO(getApplicationContext());
         listExtrato = operationDAO.listExtrato();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        operationDAO.close();
     }
 }

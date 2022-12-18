@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -13,15 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OperationsDAO {
-  //private SimpleDBWrapper dbHelper;
+  private SimpleDBWrapper db;
   //private String[] OPERATION_TABLE_COLUMNS = {SimpleDBWrapper.OPERATION_ID, SimpleDBWrapper.OPERATION_FILTER, SimpleDBWrapper.OPERATION_TYPE, SimpleDBWrapper.OPERATION_VALUE, SimpleDBWrapper.OPERATION_DATE};
   //private SQLiteDatabase db;
   private SQLiteDatabase write, read;
 
   public OperationsDAO(Context context){
-    SimpleDBWrapper db = new SimpleDBWrapper(context);
+    db = new SimpleDBWrapper(context);
     write = db.getWritableDatabase();
     read = db.getReadableDatabase();
+  }
+
+  public void close(){
+    db.close();
   }
 
   public boolean addOperation(Operation operation){
@@ -55,6 +60,7 @@ public class OperationsDAO {
       operation.setValue(Double.parseDouble("value"));
       operationList.add(operation);
     }
+    cursor.close();
     return operationList;
   }
 
@@ -73,6 +79,7 @@ public class OperationsDAO {
       operation.setValue(Double.parseDouble("value"));
       operationList.add(operation);
     }
+    cursor.close();
     return operationList;
   }
 
@@ -94,6 +101,7 @@ public class OperationsDAO {
       operation.setDate(date);
       operationList.add(operation);
     }
+    cursor.close();
     return operationList;
   }
 
@@ -111,7 +119,26 @@ public class OperationsDAO {
       extrato.setDate(date);
       extratoList.add(extrato);
     }
+    cursor.close();
     return extratoList;
   }
 
+  public List<Operation>listListaClassificada() {
+    List<Operation> operationList = new ArrayList<>();
+    String sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " GROUP BY type ORDER BY filter DESC;";
+    Cursor cursor = read.rawQuery(sql, null);
+
+    while (cursor.moveToNext()) {
+      Operation operation = new Operation();
+      @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
+      @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+      @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+      operation.setFilter(filter);
+      operation.setType(type);
+      operation.setValue(value);
+      operationList.add(operation);
+    }
+    cursor.close();
+    return operationList;
+  }
 }
