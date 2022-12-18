@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.finapp.database.Operation;
 import com.example.finapp.database.OperationsDAO;
+import com.santalu.maskara.widget.MaskEditText;
 
 import java.util.Date;
 
@@ -30,7 +31,7 @@ public class ActivityCadastroDeOperacoes extends AppCompatActivity {
         RadioButton outroCred = findViewById(R.id.radioButtonCredOutros);
 
         EditText valueInput = findViewById(R.id.editTextValue);
-        EditText dateInput = findViewById(R.id.editTextDate);
+        MaskEditText dateInput = findViewById(R.id.editTextDate);
 
         double value = Double.parseDouble(valueInput.getText().toString());
         String date = dateInput.getText().toString();

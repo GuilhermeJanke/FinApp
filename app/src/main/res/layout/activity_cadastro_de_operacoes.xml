@@ -145,17 +145,18 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextDate"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="59dp"
-        android:ems="10"
-        android:hint="dd/mm/aaaa"
-        android:inputType="text"
+        android:inputType="number"
+        app:mask="__/__/____"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
         app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
+        app:layout_constraintStart_toEndOf="@+id/textView5"/>
 
     <Button
         android:id="@+id/button"
