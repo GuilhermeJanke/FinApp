@@ -8,8 +8,13 @@
         <entry key="..\:/Users/Guilherme Janke/AndroidStudioProjects/FinApp/app/src/main/res/layout/activity_main.xml" value="0.2907608695652174" />
         <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/activity_cadastro_de_operacoes.xml" value="0.33" />
         <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/activity_extrato.xml" value="0.2907608695652174" />
+        <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/activity_lista_classificada.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/activity_main.xml" value="0.2907608695652174" />
         <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/activity_pesquisar.xml" value="0.2907608695652174" />
+        <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/adapter_list_extrato.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/adapter_list_lista_classificada.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Guilherme Janke/source/FinApp/app/src/main/res/layout/adapter_list_pesquisa.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

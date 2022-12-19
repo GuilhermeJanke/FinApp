@@ -39,7 +39,7 @@ public class AdapterPesquisa extends RecyclerView.Adapter<AdapterPesquisa.MyView
     @Override
 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View listItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_list_lista_classificada, parent, false);
+        View listItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_list_pesquisa, parent, false);
         return new MyViewHolder(listItem);
     }
 

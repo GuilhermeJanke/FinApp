@@ -142,24 +142,63 @@ public class OperationsDAO {
     return operationList;
   }
 
-  public List<Operation>listListaPesquisar(String dataInicial, String dataFinal, String tipoOperacao){
+  public List<Operation>listListaPesquisar(String tipoOperacao){
 
     List<Operation> operationList = new ArrayList<>();
     String sql = "";
 
-    if(tipoOperacao == "Todas as Operações" ){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE data BETWEEN " + dataInicial + " AND " + dataFinal;
+    if(tipoOperacao == "todos" ){
+      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER;
       Cursor cursor = read.rawQuery(sql,null);
+
+      while (cursor.moveToNext()) {
+        Operation operation = new Operation();
+        @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
+        @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+        @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+        operation.setFilter(filter);
+        operation.setType(type);
+        operation.setValue(value);
+        operationList.add(operation);
+      }
+
+      cursor.close();
       return operationList;
     }
-    if(tipoOperacao == "Crédito"){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE type = 'credito' data BETWEEN " + dataInicial + " AND " + dataFinal;
+    if(tipoOperacao == "credito"){
+      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
       Cursor cursor = read.rawQuery(sql,null);
+
+      while (cursor.moveToNext()) {
+        Operation operation = new Operation();
+        @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
+        @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+        @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+        operation.setFilter(filter);
+        operation.setType(type);
+        operation.setValue(value);
+        operationList.add(operation);
+      }
+
+      cursor.close();
       return operationList;
     }
-    if(tipoOperacao == "Débito"){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE type = 'debito' data BETWEEN " + dataInicial + " AND " + dataFinal;
+    if(tipoOperacao == "debito"){
+      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
       Cursor cursor = read.rawQuery(sql,null);
+
+      while (cursor.moveToNext()) {
+        Operation operation = new Operation();
+        @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
+        @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
+        @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+        operation.setFilter(filter);
+        operation.setType(type);
+        operation.setValue(value);
+        operationList.add(operation);
+      }
+
+      cursor.close();
       return operationList;
     }
 
