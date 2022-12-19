@@ -38,7 +38,7 @@ public class ActivityPesquisar extends AppCompatActivity {
         RadioGroup radioGroup = (RadioGroup)findViewById(R.id.rgPesquisar);
         String radiovalue =((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
 
-        this.createListaPesquisa(dataInicial,dataFinal,radiovalue);
+        this.createListaPesquisa(radiovalue);
         AdapterPesquisa adapterPesquisa = new AdapterPesquisa(listOperation);
 
         RecyclerView.LayoutManager layoutManager =
@@ -54,9 +54,9 @@ public class ActivityPesquisar extends AppCompatActivity {
 
     }
 
-    public void createListaPesquisa(String dataInicial, String dataFinal, String operacao) {
+    public void createListaPesquisa(String operacao) {
         operationDAO = new OperationsDAO(getApplicationContext());
-        listOperation = operationDAO.listListaPesquisar(dataInicial,dataFinal,operacao);
+        listOperation = operationDAO.listListaPesquisar(operacao);
     }
 
     @Override

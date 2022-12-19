@@ -142,23 +142,23 @@ public class OperationsDAO {
     return operationList;
   }
 
-  public List<Operation>listListaPesquisar(String dataInicial, String dataFinal, String tipoOperacao){
+  public List<Operation>listListaPesquisar(String tipoOperacao){
 
     List<Operation> operationList = new ArrayList<>();
     String sql = "";
 
     if(tipoOperacao == "Todas as Operações" ){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE data BETWEEN " + dataInicial + " AND " + dataFinal;
+      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " GROUP BY type ORDER BY filter DESC;";
       Cursor cursor = read.rawQuery(sql,null);
       return operationList;
     }
     if(tipoOperacao == "Crédito"){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE type = 'credito' data BETWEEN " + dataInicial + " AND " + dataFinal;
+      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
       Cursor cursor = read.rawQuery(sql,null);
       return operationList;
     }
     if(tipoOperacao == "Débito"){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE type = 'debito' data BETWEEN " + dataInicial + " AND " + dataFinal;
+      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
       Cursor cursor = read.rawQuery(sql,null);
       return operationList;
     }
