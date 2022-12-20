@@ -1,11 +1,13 @@
 package com.example.finapp.database;
 
+import java.util.Date;
+
 public class Operation {
   private int id;
   private String filter;
   private String type;
   private double value;
-  private String date;
+  private Date date;
 
   public int getId() {
     return id;
@@ -39,11 +41,11 @@ public class Operation {
     this.value = value;
   }
 
-  public String getDate() {
+  public Date getDate() {
     return date;
   }
 
-  public void setDate(String date) {
+  public void setDate(Date date) {
     this.date = date;
   }
 }

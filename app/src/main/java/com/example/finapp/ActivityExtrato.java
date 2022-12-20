@@ -21,6 +21,7 @@ import com.example.finapp.database.Operation;
 import com.example.finapp.database.OperationsDAO;
 import com.example.finapp.model.Extrato;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +60,11 @@ public class ActivityExtrato extends AppCompatActivity {
 
     public void createExtrato() {
         operationDAO = new OperationsDAO(getApplicationContext());
-        listExtrato = operationDAO.listExtrato();
+        try {
+            listExtrato = operationDAO.listExtrato();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
