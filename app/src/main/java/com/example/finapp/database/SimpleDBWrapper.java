@@ -19,7 +19,7 @@ public class SimpleDBWrapper extends SQLiteOpenHelper {
 
   private static final String DB_CREATE_OPER ="CREATE TABLE IF NOT EXISTS " + TABLE_NAME_OPER +
           "(" + OPERATION_ID + " integer primary key autoincrement, " + OPERATION_FILTER + " text not null, " +
-          OPERATION_TYPE + " text not null, " + OPERATION_VALUE + " double, " + OPERATION_DATE + " text not null);";
+          OPERATION_TYPE + " text not null, " + OPERATION_VALUE + " double, " + OPERATION_DATE + " date);";
 
   public SimpleDBWrapper(Context context){
     super(context, DB_NAME, null, DB_VERSION);

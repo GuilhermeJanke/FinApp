@@ -4,13 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.finapp.model.Extrato;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OperationsDAO {
@@ -34,7 +36,7 @@ public class OperationsDAO {
     values.put(SimpleDBWrapper.OPERATION_FILTER, operation.getFilter());
     values.put(SimpleDBWrapper.OPERATION_TYPE, operation.getType());
     values.put(SimpleDBWrapper.OPERATION_VALUE, operation.getValue());
-    values.put(SimpleDBWrapper.OPERATION_DATE, operation.getDate());
+    values.put(SimpleDBWrapper.OPERATION_DATE, operation.getDate().toString());
 
     try{
       write.insert(SimpleDBWrapper.TABLE_NAME_OPER, null, values);
@@ -46,66 +48,7 @@ public class OperationsDAO {
     return true;
   }
 
-  public List<Operation> getListaClassificada(){
-    List<Operation> operationList = new ArrayList<>();
-    String sql = "SELECT id, filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " GROUP BY filter;";
-    Cursor cursor = read.rawQuery(sql, null);
-
-    while(cursor.moveToNext()){
-      Operation operation = new Operation();
-      @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
-      operation.setId(id);
-      operation.setFilter("filter");
-      operation.setType("type");
-      operation.setValue(Double.parseDouble("value"));
-      operationList.add(operation);
-    }
-    cursor.close();
-    return operationList;
-  }
-
-  public List<Operation> search(String minDate, String maxDate){
-    List<Operation> operationList = new ArrayList<>();
-    String sql = "SELECT id, filter, date, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE "
-            + SimpleDBWrapper.OPERATION_DATE + " BETWEEN " + "minDate" + " AND " + "maxDate;";
-    Cursor cursor = read.rawQuery(sql, null);
-
-    while(cursor.moveToNext()){
-      Operation operation = new Operation();
-      @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
-      operation.setId(id);
-      operation.setFilter("filter");
-      operation.setType("date");
-      operation.setValue(Double.parseDouble("value"));
-      operationList.add(operation);
-    }
-    cursor.close();
-    return operationList;
-  }
-
-  public List<Operation> getAllOperations(){
-    List<Operation> operationList = new ArrayList<>();
-    Cursor cursor = read.query(SimpleDBWrapper.TABLE_NAME_OPER, new String[]{"id", "filter", "type", "value", "date"},
-            null, null, null, null, null );
-    while(cursor.moveToNext()){
-      Operation operation = new Operation();
-      @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
-      @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
-      @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
-      @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
-      @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));;
-      operation.setId(id);
-      operation.setFilter(filter);
-      operation.setType(type);
-      operation.setValue(value);
-      operation.setDate(date);
-      operationList.add(operation);
-    }
-    cursor.close();
-    return operationList;
-  }
-
-  public List<Extrato> listExtrato(){
+  public List<Extrato> listExtrato() throws ParseException {
     List<Extrato> extratoList = new ArrayList<>();
     Cursor cursor = read.query(SimpleDBWrapper.TABLE_NAME_OPER, new String[]{"type", "value", "date"},
             null, null, null, null, null );
@@ -113,7 +56,7 @@ public class OperationsDAO {
       Extrato extrato = new Extrato();
       @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
       @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
-      @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));;
+      @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));
       extrato.setType(type);
       extrato.setValue(value);
       extrato.setDate(date);

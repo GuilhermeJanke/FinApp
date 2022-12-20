@@ -12,6 +12,8 @@ import com.example.finapp.database.Operation;
 import com.example.finapp.database.OperationsDAO;
 import com.santalu.maskara.widget.MaskEditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ActivityCadastroDeOperacoes extends AppCompatActivity {
@@ -34,7 +36,13 @@ public class ActivityCadastroDeOperacoes extends AppCompatActivity {
         MaskEditText dateInput = findViewById(R.id.editTextDate);
 
         double value = Double.parseDouble(valueInput.getText().toString());
-        String date = dateInput.getText().toString();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+        try {
+            date = format.parse(dateInput.getText().toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         if(valueInput.length() == 0 | dateInput.length() == 0){
             Toast.makeText(this, "Digite todos os valores para continuar!", Toast.LENGTH_SHORT).show();
