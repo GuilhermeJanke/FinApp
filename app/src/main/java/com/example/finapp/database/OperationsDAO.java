@@ -109,7 +109,7 @@ public class OperationsDAO {
     String sql = "";
 
     if(tipoOperacao == "todos" ){
-      sql = "SELECT filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER;
+      sql = "SELECT filter, type, value, date FROM " + SimpleDBWrapper.TABLE_NAME_OPER;
       Cursor cursor = read.rawQuery(sql,null);
 
       while (cursor.moveToNext()) {
@@ -117,9 +117,18 @@ public class OperationsDAO {
         @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
         @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
         @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+        @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));
         operation.setFilter(filter);
         operation.setType(type);
         operation.setValue(value);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateDate = null;
+        try {
+          dateDate = format.parse(date);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        operation.setDate(dateDate);
         operationList.add(operation);
       }
 
@@ -127,7 +136,7 @@ public class OperationsDAO {
       return operationList;
     }
     if(tipoOperacao == "credito"){
-      sql = "SELECT filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
+      sql = "SELECT filter, type, value, date FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
       Cursor cursor = read.rawQuery(sql,null);
 
       while (cursor.moveToNext()) {
@@ -135,9 +144,18 @@ public class OperationsDAO {
         @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
         @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
         @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+        @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));
         operation.setFilter(filter);
         operation.setType(type);
         operation.setValue(value);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateDate = null;
+        try {
+          dateDate = format.parse(date);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        operation.setDate(dateDate);
         operationList.add(operation);
       }
 
@@ -145,7 +163,7 @@ public class OperationsDAO {
       return operationList;
     }
     if(tipoOperacao == "debito"){
-      sql = "SELECT filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
+      sql = "SELECT filter, type, value, date FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
       Cursor cursor = read.rawQuery(sql,null);
 
       while (cursor.moveToNext()) {
@@ -153,9 +171,18 @@ public class OperationsDAO {
         @SuppressLint("Range") String filter = cursor.getString(cursor.getColumnIndex("filter"));
         @SuppressLint("Range") String type = cursor.getString(cursor.getColumnIndex("type"));
         @SuppressLint("Range") double value = cursor.getDouble(cursor.getColumnIndex("value"));
+        @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));
         operation.setFilter(filter);
         operation.setType(type);
         operation.setValue(value);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateDate = null;
+        try {
+          dateDate = format.parse(date);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        operation.setDate(dateDate);
         operationList.add(operation);
       }
 

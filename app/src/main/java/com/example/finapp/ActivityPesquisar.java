@@ -11,7 +11,11 @@ import com.example.finapp.adapter.AdapterPesquisa;
 import com.example.finapp.database.Operation;
 import com.example.finapp.database.OperationsDAO;
 import com.santalu.maskara.widget.MaskEditText;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ActivityPesquisar extends AppCompatActivity {
@@ -35,6 +39,28 @@ public class ActivityPesquisar extends AppCompatActivity {
 
         MaskEditText dateInputInicial = findViewById(R.id.dataInicial);
 
+        MaskEditText dateInputFinal = findViewById(R.id.dataInicial);
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date dateInicial = null;
+        if(dateInputInicial != null){
+            try {
+                dateInicial = format.parse(dateInputInicial.getText().toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Date dateFinal = null;
+        if(dateInputInicial != null){
+            try {
+                dateFinal = format.parse(dateInputFinal.getText().toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
         if(radioButtonTodos.isChecked()) {
             this.createListaPesquisa("todos");
 
@@ -46,6 +72,9 @@ public class ActivityPesquisar extends AppCompatActivity {
             this.createListaPesquisa("debito");
         }
 
+        if(dateInicial != null){
+
+        }
 
         AdapterPesquisa adapterPesquisa = new AdapterPesquisa(listOperation);
 

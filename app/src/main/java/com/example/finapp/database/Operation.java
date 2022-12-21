@@ -8,6 +8,9 @@ public class Operation {
   private String type;
   private double value;
   private Date date;
+  private String stringDate;
+
+  public void Operation(){}
 
   public int getId() {
     return id;
@@ -47,5 +50,13 @@ public class Operation {
 
   public void setDate(Date date) {
     this.date = date;
+  }
+
+  public String getStringDate() {
+    return stringDate;
+  }
+
+  public void setStringDate(String stringDate) {
+    this.stringDate = stringDate;
   }
 }
