@@ -12,6 +12,8 @@ import com.example.finapp.model.Extrato;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +38,14 @@ public class OperationsDAO {
     values.put(SimpleDBWrapper.OPERATION_FILTER, operation.getFilter());
     values.put(SimpleDBWrapper.OPERATION_TYPE, operation.getType());
     values.put(SimpleDBWrapper.OPERATION_VALUE, operation.getValue());
-    values.put(SimpleDBWrapper.OPERATION_DATE, operation.getDate().toString());
+
+    Date date = operation.getDate();
+
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+    String strDate = formatter.format(date);
+
+    values.put(SimpleDBWrapper.OPERATION_DATE, strDate);
 
     try{
       write.insert(SimpleDBWrapper.TABLE_NAME_OPER, null, values);
@@ -60,9 +69,19 @@ public class OperationsDAO {
       extrato.setType(type);
       extrato.setValue(value);
       extrato.setDate(date);
+
+      SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+      Date dateDate = null;
+      try {
+        dateDate = format.parse(date);
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+      extrato.setDateDate(dateDate);
       extratoList.add(extrato);
     }
     cursor.close();
+    Collections.sort(extratoList);
     return extratoList;
   }
 
