@@ -5,13 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActivityPesquisar" >
+    tools:context=".ActivityPesquisar">
+
+    <TextView
+        android:id="@+id/textViewPesquisar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:fontFamily="sans-serif-medium"
+        android:padding="16dp"
+        android:text="Pesquisar"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data Inicial:" />
+        android:padding="8dp"
+        android:text="Data Inicial:"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/dataInicial"
@@ -27,7 +41,10 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data Final:" />
+        android:padding="8dp"
+        android:text="Data Final:"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/dataFinal"
@@ -64,14 +81,63 @@
 
     <Button
         android:id="@+id/btnPesquisarLista"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:backgroundTint="#193ADD"
+        android:insetBottom="8dp"
         android:onClick="onClick"
         android:text="Pesquisar" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="Data"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="Classificação"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="Valor"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPesquisar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="#DADADA" />
 
 </LinearLayout>
