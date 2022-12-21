@@ -121,6 +121,7 @@ public class OperationsDAO {
         operation.setFilter(filter);
         operation.setType(type);
         operation.setValue(value);
+        operation.setStringDate(date);
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date dateDate = null;
         try {
@@ -148,6 +149,7 @@ public class OperationsDAO {
         operation.setFilter(filter);
         operation.setType(type);
         operation.setValue(value);
+        operation.setStringDate(date);
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date dateDate = null;
         try {
@@ -175,6 +177,7 @@ public class OperationsDAO {
         operation.setFilter(filter);
         operation.setType(type);
         operation.setValue(value);
+        operation.setStringDate(date);
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date dateDate = null;
         try {

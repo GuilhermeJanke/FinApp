@@ -23,13 +23,13 @@ public class AdapterPesquisa extends RecyclerView.Adapter<AdapterPesquisa.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView filter;
+        TextView date;
         TextView type;
         TextView value;
 
         public MyViewHolder(View view){
             super(view);
-            filter = view.findViewById(R.id.textViewOperacao);
+            date = view.findViewById(R.id.textViewOperacao);
             type = view.findViewById(R.id.textViewCategoria);
             value = view.findViewById(R.id.textViewValor);
         }
@@ -47,7 +47,7 @@ public class AdapterPesquisa extends RecyclerView.Adapter<AdapterPesquisa.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Operation obj = listOperation.get(position);
-        holder.filter.setText(obj.getFilter());
+        holder.date.setText(obj.getStringDate());
         holder.type.setText(obj.getType());
         holder.value.setText(Double.toString(obj.getValue()));
 
