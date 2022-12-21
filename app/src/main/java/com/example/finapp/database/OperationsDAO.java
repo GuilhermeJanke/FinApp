@@ -82,6 +82,11 @@ public class OperationsDAO {
     }
     cursor.close();
     Collections.sort(extratoList);
+
+    while(extratoList.size()>15){
+      extratoList.remove(extratoList.size()-1);
+    }
+
     return extratoList;
   }
 
