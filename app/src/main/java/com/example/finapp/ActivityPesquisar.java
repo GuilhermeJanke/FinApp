@@ -33,6 +33,8 @@ public class ActivityPesquisar extends AppCompatActivity {
         RadioButton radioButtonCredito = findViewById(R.id.credito);
         RadioButton radioButtonDebito = findViewById(R.id.debito);
 
+        MaskEditText dateInputInicial = findViewById(R.id.dataInicial);
+
         if(radioButtonTodos.isChecked()) {
             this.createListaPesquisa("todos");
 
