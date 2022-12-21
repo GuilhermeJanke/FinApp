@@ -23,6 +23,7 @@ public class ActivityPesquisar extends AppCompatActivity {
     private OperationsDAO operationDAO;
     private List<Operation> listOperation = new ArrayList<>();
     private RecyclerView recyclerViewListaPesquisa;
+    private List<Operation> listOperationFilter = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,16 @@ public class ActivityPesquisar extends AppCompatActivity {
 
     public void onClick(View view){
 
+        listOperation.clear();
+        listOperationFilter.clear();
+
         RadioButton radioButtonTodos = findViewById(R.id.todas);
         RadioButton radioButtonCredito = findViewById(R.id.credito);
         RadioButton radioButtonDebito = findViewById(R.id.debito);
 
         MaskEditText dateInputInicial = findViewById(R.id.dataInicial);
 
-        MaskEditText dateInputFinal = findViewById(R.id.dataInicial);
+        MaskEditText dateInputFinal = findViewById(R.id.dataFinal);
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -72,11 +76,32 @@ public class ActivityPesquisar extends AppCompatActivity {
             this.createListaPesquisa("debito");
         }
 
-        if(dateInicial != null){
 
+        if(dateInicial != null && dateFinal != null){
+            for(Operation oper : listOperation){
+                if(oper.getDate().compareTo(dateInicial) >= 0){
+                    if(oper.getDate().compareTo(dateFinal) <= 0) {
+                        listOperationFilter.add(oper);
+                    }
+                }
+            }
+        } else if(dateInicial != null && dateFinal == null) {
+            for (Operation oper : listOperation) {
+                if (oper.getDate().compareTo(dateInicial) >= 0) {
+                    listOperationFilter.add(oper);
+                }
+            }
+        } else if(dateInicial == null && dateFinal != null) {
+            for (Operation oper : listOperation) {
+                if (oper.getDate().compareTo(dateFinal) <= 0) {
+                    listOperationFilter.add(oper);
+                }
+            }
+        } else {
+            listOperationFilter = listOperation;
         }
 
-        AdapterPesquisa adapterPesquisa = new AdapterPesquisa(listOperation);
+        AdapterPesquisa adapterPesquisa = new AdapterPesquisa(listOperationFilter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewListaPesquisa.setLayoutManager(layoutManager);
