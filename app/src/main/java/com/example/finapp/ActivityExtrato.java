@@ -23,6 +23,7 @@ import com.example.finapp.model.Extrato;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ActivityExtrato extends AppCompatActivity {
@@ -40,6 +41,10 @@ public class ActivityExtrato extends AppCompatActivity {
 
         //Configurar o Adapter
         this.createExtrato();
+        Collections.sort(listExtrato);
+        while(listExtrato.size()>15){
+            listExtrato.remove(listExtrato.size()-1);
+        }
         AdapterExtrato adapter = new AdapterExtrato(listExtrato);
 
         //Configurar RecyclerView utilizando um layout linear

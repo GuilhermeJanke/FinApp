@@ -81,12 +81,6 @@ public class OperationsDAO {
       extratoList.add(extrato);
     }
     cursor.close();
-    Collections.sort(extratoList);
-
-    while(extratoList.size()>15){
-      extratoList.remove(extratoList.size()-1);
-    }
-
     return extratoList;
   }
 
@@ -115,7 +109,7 @@ public class OperationsDAO {
     String sql = "";
 
     if(tipoOperacao == "todos" ){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER;
+      sql = "SELECT filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER;
       Cursor cursor = read.rawQuery(sql,null);
 
       while (cursor.moveToNext()) {
@@ -133,7 +127,7 @@ public class OperationsDAO {
       return operationList;
     }
     if(tipoOperacao == "credito"){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
+      sql = "SELECT filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
       Cursor cursor = read.rawQuery(sql,null);
 
       while (cursor.moveToNext()) {
@@ -151,7 +145,7 @@ public class OperationsDAO {
       return operationList;
     }
     if(tipoOperacao == "debito"){
-      sql = "SELECT filter, type, SUM(value) as value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
+      sql = "SELECT filter, type, value FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
       Cursor cursor = read.rawQuery(sql,null);
 
       while (cursor.moveToNext()) {

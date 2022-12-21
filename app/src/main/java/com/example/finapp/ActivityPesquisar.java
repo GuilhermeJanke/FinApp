@@ -44,6 +44,7 @@ public class ActivityPesquisar extends AppCompatActivity {
             this.createListaPesquisa("debito");
         }
 
+
         AdapterPesquisa adapterPesquisa = new AdapterPesquisa(listOperation);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
