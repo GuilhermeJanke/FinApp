@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txtSaldo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <!-- row 1 -->
 
@@ -15,7 +17,24 @@
         android:padding="16dp"
         android:text="Extrato"
         android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#A4CDDF"
+        android:fontFamily="sans-serif-medium"
+        android:text="Saldo Atual:"
+        android:textColor="#090909" />
+
+    <TextView
+        android:id="@+id/txtSaldoAtual"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D9E9EC"
+        android:fontFamily="sans-serif-medium" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -98,7 +117,9 @@
             android:id="@+id/recyclerViewExtrato"
             android:layout_width="match_parent"
             android:layout_height="629dp"
-            android:background="#DADADA" />
+            android:background="#DADADA">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <!-- row 1 end -->
