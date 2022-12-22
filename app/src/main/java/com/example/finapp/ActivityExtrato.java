@@ -21,6 +21,8 @@ import com.example.finapp.database.Operation;
 import com.example.finapp.database.OperationsDAO;
 import com.example.finapp.model.Extrato;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,6 +33,11 @@ public class ActivityExtrato extends AppCompatActivity {
     private RecyclerView recyclerViewExtrato;
     private List<Extrato> listExtrato = new ArrayList<>();
     private OperationsDAO operationDAO;
+    private String valorDebito;
+    private String valorCredito;
+    double recebeCredito = 0;
+    double recebeDebito = 0;
+    double total = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +47,11 @@ public class ActivityExtrato extends AppCompatActivity {
         recyclerViewExtrato = findViewById(R.id.recyclerViewExtrato);
 
         //Configurar o Adapter
+
         this.createExtrato();
+        this.PegarDebito();
+        this.PegarCredito();
+
         Collections.sort(listExtrato);
         while(listExtrato.size()>15){
             listExtrato.remove(listExtrato.size()-1);
@@ -61,6 +72,13 @@ public class ActivityExtrato extends AppCompatActivity {
         //Liga o adapter ao recycler
         recyclerViewExtrato.setAdapter(adapter);
 
+        recebeCredito = Double.parseDouble(valorCredito);
+        recebeDebito = Double.parseDouble(valorDebito);
+        total = recebeCredito - recebeDebito;
+
+        TextView saldoAtual = findViewById(R.id.txtSaldoAtual);
+        saldoAtual.setText("R$ " + String.valueOf(total));
+
     }
 
     public void createExtrato() {
@@ -68,6 +86,24 @@ public class ActivityExtrato extends AppCompatActivity {
         try {
             listExtrato = operationDAO.listExtrato();
         } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PegarDebito(){
+        operationDAO = new OperationsDAO(getApplicationContext());
+        try{
+            valorDebito = operationDAO.retornaDebitos();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void PegarCredito(){
+        operationDAO = new OperationsDAO(getApplicationContext());
+        try{
+            valorCredito = operationDAO.retornaCreditos();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

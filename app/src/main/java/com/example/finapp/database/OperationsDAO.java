@@ -195,4 +195,38 @@ public class OperationsDAO {
 
   return null;
   }
+
+  public String retornaDebitos(){
+
+    String query = "SELECT SUM(value)  FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'debito'";
+    String total = "0";
+    Cursor cursor = read.rawQuery(query,null);
+
+    if (cursor.moveToFirst()){
+      total = String.valueOf(cursor.getDouble(0));
+    }
+
+    else
+      total = "0";
+      cursor.close();
+
+    return total;
+  }
+
+  public String retornaCreditos(){
+
+    String query = "SELECT SUM(value)  FROM " + SimpleDBWrapper.TABLE_NAME_OPER + " WHERE filter = 'credito'";
+    String total = "0";
+    Cursor cursor = read.rawQuery(query,null);
+
+    if (cursor.moveToFirst()){
+      total = String.valueOf(cursor.getDouble(0));
+    }
+
+    else
+      total = "0";
+    cursor.close();
+
+    return total;
+  }
 }
